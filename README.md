@@ -14,3 +14,5 @@ then after a space, append any of the following commands:
    - converts a given time between two timezones.
  - help
    - displays the list of commands found here.
+
+([timezone] can be replaced with any common timezone name, but for best results use standard time or IANA standard.)
