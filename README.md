@@ -1,0 +1,2 @@
+# TimeZoneBot
+ A Discord bot

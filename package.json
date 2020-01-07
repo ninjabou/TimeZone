@@ -1,0 +1,14 @@
+{
+    "name": "timezone-bot",
+    "version": "0",
+    "description": "A timezone conversion bot",
+    "main": "bot.js",
+    "author": "ninjabou",
+    "dependencies": {
+        "discord.io": "github:woor/discord.io#gateway_v6",
+        "js-joda": "^1.11.0",
+        "spacetime": "^6.0.0",
+        "spacetime-informal": "^0.1.0",
+        "winston": "^3.2.1"
+    }
+}
