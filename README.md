@@ -8,7 +8,7 @@ to send a command to the bot, type:
 then after a space, append any of the following commands:
  - ping 
    - pong!
- - now
+ - now [timezone]
    - displays the current time in the provided region.
  - convert [timezone] (optional)[timezone]
    - converts a given time between two timezones.
