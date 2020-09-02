@@ -219,7 +219,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             // Sent if user sends a nonsense command following '%t '
             default:
                 if(args[0].substring(args[0].length - 3, args[0].length) == "ing"){
-                    var str = args[0].substring(0,1).toUpperCase + args[0].substring(1, args[0].length - 3) + "ong!";
+                    var str = args[0].substring(0,1).toUpperCase() + args[0].substring(1, args[0].length - 3) + "ong!";
                     bot.sendMessage({
                         to: channelID,
                         message: str
