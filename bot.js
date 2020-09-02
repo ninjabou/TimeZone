@@ -53,14 +53,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         }
         args = args.splice(0);
 
-        if(args[0].substring(args[0].length - 3, args[0].length) == "ing"){
-		var str = args[0].substring(0, args[0].length - 4) + "o" + args[0].substring(ars[0].length - 2, args[0].length);
-		bot.sendMessage({
-			to: channelID,
-			message: {str}
-		});
-	}
-
         switch(args[0]) {
             //case 'ping':
             //console.log("   ⮡ SENT IN CHANNEL " + channelID + ", FROM " + user + " (" + userID + ")");
@@ -226,10 +218,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
             // Sent if user sends a nonsense command following '%t '
             default:
-                bot.sendMessage({
-                    to: channelID,
-                    message: 'Apologies, but I did not fully understand your request. For a list of commands, type `%t help`'
-                });
+                if(args[0].substring(args[0].length - 3, args[0].length) == "ing"){
+                    var str = args[0].substring(0, args[0].length - 3) + "ong!";
+                    bot.sendMessage({
+                        to: channelID,
+                        message: str
+                    });
+                } else {
+                    bot.sendMessage({
+                        to: channelID,
+                        message: 'Apologies, but I did not fully understand your request. For a list of commands, type `%t help`'
+                    });
+                }
             break;
          }
     }
