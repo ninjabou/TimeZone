@@ -11,6 +11,8 @@ logger.add(new logger.transports.Console, {
 });
 logger.level = 'debug';
 
+logger.info('TOKEN:' + auth.token)
+
 // Initialize Discord Bot
 var bot = new Discord.Client({
    token: auth.token,
@@ -29,7 +31,7 @@ bot.on('ready', function (evt) {
     bot.setPresence( {
         game: { 
             type: 0, 
-            name: 'on ' + Object.keys(bot.servers).length + ' servers'
+            name: 'on ' + Object.keys(bot.servers).length + ' servers (%t)'
         } 
     } );
 });
@@ -51,14 +53,30 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         }
         args = args.splice(0);
 
+        if(args[0].substring(args[0].length - 3, args[0].length) == "ing"){
+		var str = args[0].substring(0, args[0].length - 4) + "o" + args[0].substring(ars[0].length - 2, args[0].length);
+		bot.sendMessage({
+			to: channelID,
+			message: {str}
+		});
+	}
+
         switch(args[0]) {
-            case 'ping':
-                console.log("   ⮡ SENT IN CHANNEL " + channelID + ", FROM " + user + " (" + userID + ")");
-                bot.sendMessage({
-                    to: channelID,
-                    message: 'Pong!'
-                });
-            break;
+            //case 'ping':
+            //console.log("   ⮡ SENT IN CHANNEL " + channelID + ", FROM " + user + " (" + userID + ")");
+            //bot.sendMessage({
+            //to: channelID,
+            //message: 'Pong!'
+            //});
+            //break;
+
+	    //case 'sping':
+            //    bot.sendMessage({
+            //        to: channelID,
+            //        message: 'Spong!'
+            //    });
+            //break;
+
 
             case 'now':
                 if(args.length < 2){
@@ -202,7 +220,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             case 'help':
                 bot.sendMessage({
                     to: channelID,
-                    message: 'The following commands are currently available to use:```\n\nping - does what you\'d expect\nnow [timezone]- displays the current time in the provided region\nconvert [timezone] (optional)[timezone] - converts a given time between two timezones\nhelp - hey, you\'re here now!```'
+                    message: 'The following commands are currently available to use:```\n\nping - does what you\'d expect\nnow [timezone]- displays the current time in the provided region\nconvert [time] [from timezone] [to timezone (optional)] - converts a given time between two timezones\nhelp - hey, you\'re here now!```'
                 });
             break;
 
